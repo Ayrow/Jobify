@@ -1,5 +1,10 @@
-function App() {
-  return <h1>Jobify</h1>;
-}
+import Landing from './pages/Landing';
 
+function App() {
+  return (
+    <div>
+      <Landing />
+    </div>
+  );
+}
 export default App;
