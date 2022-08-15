@@ -14,31 +14,35 @@ const Register = () => {
   const [values, setValues] = useState(initialState);
   // global state and useNavigate
 
-  const { isLoading, showAlert } = useAppContext();
+  const { isLoading, showAlert, displayAlert } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
   };
 
   const handleChange = (e) => {
-    console.log(e.target);
+    setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
   };
 
   return (
     <Wrapper className='full-page'>
-      <form className='form' onSubmit={handleSubmit}>
+      <form className='form' onSubmit={onSubmit}>
         <Logo />
         <h3> {values.isMember ? 'Login' : 'Register'} </h3>
         {showAlert && <Alert />}
         {!values.isMember && (
           <FormRow
             type='name'
-            labelText='name'
+            name='name'
             value={values.name}
             handleChange={handleChange}
           />
@@ -46,13 +50,13 @@ const Register = () => {
 
         <FormRow
           type='email'
-          labelText='email'
+          name='email'
           value={values.email}
           handleChange={handleChange}
         />
         <FormRow
           type='password'
-          labelText='password'
+          name='password'
           value={values.password}
           handleChange={handleChange}
         />
