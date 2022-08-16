@@ -1,2 +1,7 @@
-const connectionString =
-  ' mongodb+srv://aymeric:<password>@jobify-cluster.03yuvd8.mongodb.net/?retryWrites=true&w=majority';
+import mongoose from 'mongoose';
+
+const connectDB = (url) => {
+  return mongoose.connect(url);
+};
+
+export default connectDB;
