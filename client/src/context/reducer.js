@@ -1,4 +1,10 @@
-import { CLEAR_ALERT, DISPLAY_ALERT } from './actions';
+import {
+  CLEAR_ALERT,
+  DISPLAY_ALERT,
+  REGISTER_USER_BEGIN,
+  REGISTER_USER_ERROR,
+  REGISTER_USER_SUCCESS,
+} from './actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -16,6 +22,19 @@ const reducer = (state, action) => {
         alertType: '',
         alertText: '',
       };
+    case REGISTER_USER_BEGIN:
+      return {
+        ...state,
+      };
+    case REGISTER_USER_SUCCESS:
+      return {
+        ...state,
+      };
+    case REGISTER_USER_ERROR:
+      return {
+        ...state,
+      };
+
     default:
       throw new Error(`no such action : ${action.type}`);
   }
