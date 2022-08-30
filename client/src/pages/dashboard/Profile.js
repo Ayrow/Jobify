@@ -20,7 +20,6 @@ const Profile = () => {
     //   return;
     // }
     updateUser({ name, email, lastName, location });
-    console.log('update user');
   };
 
   return (
