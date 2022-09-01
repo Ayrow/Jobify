@@ -58,7 +58,7 @@ const AppProvider = ({ children }) => {
 
   //axios
   const authFetch = axios.create({
-    baseURL: '/api/v1/auth',
+    baseURL: '/api/v1',
   });
 
   // request
@@ -138,7 +138,7 @@ const AppProvider = ({ children }) => {
   const updateUser = async (currentUser) => {
     dispatch({ type: UPDATE_USER_BEGIN });
     try {
-      const { data } = await authFetch.patch('/updateUser', currentUser);
+      const { data } = await authFetch.patch('/auth/updateUser', currentUser);
       const { user, location, token } = data;
       dispatch({
         type: UPDATE_USER_SUCCESS,
@@ -210,6 +210,14 @@ const AppProvider = ({ children }) => {
     clearAlert();
   };
 
+  const setEditJob = (id) => {
+    console.log(`set edit job : ${id}`);
+  };
+
+  const deleteJob = (id) => {
+    console.log(`delete job : ${id}`);
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -223,6 +231,8 @@ const AppProvider = ({ children }) => {
         clearValues,
         createJob,
         getJobs,
+        setEditJob,
+        deleteJob,
       }}>
       {children}
     </AppContext.Provider>
