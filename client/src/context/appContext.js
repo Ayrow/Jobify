@@ -21,6 +21,7 @@ import {
   CREATE_JOB_SUCCESS,
   GET_JOBS_BEGIN,
   GET_JOBS_SUCCESS,
+  SET_EDIT_JOB,
 } from './actions';
 
 const token = localStorage.getItem('token');
@@ -198,6 +199,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: GET_JOBS_BEGIN });
     try {
       const { data } = await authFetch(url);
+
       const { jobs, totalJobs, numOfPages } = data;
       dispatch({
         type: GET_JOBS_SUCCESS,
@@ -211,7 +213,12 @@ const AppProvider = ({ children }) => {
   };
 
   const setEditJob = (id) => {
+    dispatch({ type: SET_EDIT_JOB, payload: { id } });
     console.log(`set edit job : ${id}`);
+  };
+
+  const editJob = () => {
+    console.log('edit Job');
   };
 
   const deleteJob = (id) => {
@@ -233,6 +240,7 @@ const AppProvider = ({ children }) => {
         getJobs,
         setEditJob,
         deleteJob,
+        editJob,
       }}>
       {children}
     </AppContext.Provider>

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { FaLocationArrow, FaBriefCase, FaCalendarAlt } from 'react-icons/fa';
+import { FaLocationArrow, FaBriefcase, FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import Wrapper from '../assets/wrappers/Job';
 import { useAppContext } from '../context/appContext';
@@ -28,7 +28,14 @@ const Job = ({
         </div>
       </header>
       <div className='content'>
-        {/* content center later */}
+        <div className='content-center'>
+          <JobInfo icon={<FaLocationArrow />} text={jobLocation} />
+          <JobInfo icon={<FaCalendarAlt />} text={date} />
+          <JobInfo icon={<FaBriefcase />} text={jobType} />
+
+          <div className={`status ${status}`}>{status}</div>
+        </div>
+
         <footer>
           <div className='actions'>
             <Link
