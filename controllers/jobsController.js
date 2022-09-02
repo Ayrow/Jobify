@@ -26,6 +26,10 @@ const getAllJobs = async (req, res) => {
     queryObject.status = status;
   }
 
+  if (jobType !== 'all') {
+    queryObject.jobType = jobType;
+  }
+
   let result = Job.find(queryObject);
 
   //chain sort conditions
