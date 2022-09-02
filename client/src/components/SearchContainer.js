@@ -45,7 +45,8 @@ const SearchContainer = () => {
             list={['all', ...statusOptions]}
           />
           <FormRowSelect
-            name='searchStatus'
+            labelText='type'
+            name='searchType'
             value={searchType}
             handleChange={handleSearch}
             list={['all', ...jobTypeOptions]}
