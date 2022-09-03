@@ -9,9 +9,21 @@ const PageBtnContainer = () => {
     return index + 1;
   });
 
-  const nextPage = () => console.log('next page');
+  const nextPage = () => {
+    let newPage = page - 1;
+    changePage(newPage);
+    if (newPage < numOfPages) {
+      newPage = numOfPages;
+    }
+  };
 
-  const prevPage = () => console.log('previous page');
+  const prevPage = () => {
+    let newPage = page + 1;
+    changePage(newPage);
+    if (newPage > numOfPages) {
+      newPage = 1;
+    }
+  };
 
   return (
     <Wrapper>
