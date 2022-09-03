@@ -113,6 +113,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         [action.payload.name]: action.payload.value,
+        page: 1,
       };
     case CLEAR_VALUES:
       const differentInitialState = {
