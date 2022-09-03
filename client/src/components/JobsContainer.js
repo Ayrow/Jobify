@@ -1,7 +1,7 @@
 import Job from './Job';
 import Wrapper from '../assets/wrappers/JobsContainer';
 import Loading from './Loading';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useAppContext } from '../context/appContext';
 import PageBtnContainer from './PageBtnContainer';
 
@@ -21,6 +21,7 @@ const JobsContainer = () => {
 
   useEffect(() => {
     getJobs();
+    //eslint-disable-next-line
   }, [page, search, searchStatus, searchType, sort]);
 
   if (isLoading) {
